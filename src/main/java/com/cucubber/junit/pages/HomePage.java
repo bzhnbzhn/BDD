@@ -4,6 +4,7 @@ import com.cucubber.junit.driver.DriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import static com.cucubber.junit.driver.DriverManager.getDriver;
 import static java.lang.String.format;
 
 public class HomePage extends BasePage {

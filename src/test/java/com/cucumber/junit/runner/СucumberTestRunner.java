@@ -6,8 +6,9 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        tags = "smoke",
+        plugin = "pretty",
+        monochrome = true,
         glue = "com.cucumber.junit",
-        features = "classpath:com/cucumber/junit/features")
+        features = "src/test/resources/com/cucumber/junit/features")
 public class СucumberTestRunner {
 }

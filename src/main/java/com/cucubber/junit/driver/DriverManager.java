@@ -3,6 +3,7 @@ package com.cucubber.junit.driver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.util.Objects;
 import java.util.Optional;
 
 public class DriverManager {
@@ -13,7 +14,12 @@ public class DriverManager {
     }
 
     public static void setupDriver() {
-        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver");
+        if (Objects.equals(System.getProperty("os.name"), "Mac OS X")) {
+            System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver");
+        } else {
+            System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriverW.exe");
+        }
+
         driver = new ChromeDriver();
         driver.manage().window().maximize();
     }

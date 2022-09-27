@@ -1,13 +1,10 @@
 Feature: As a user I want to get ability to use top menu section
 
-  @smoke
   Scenario: Order Status page should contains appropriate title
     When the user open web site
     When the user clicks on the "Order Status" section
     Then page with title "View Status of Your Order" is displayed
 
-
-  @smoke
   Scenario: Contact Us section should contains appropriate title
     When the user open web site
     When the user clicks on the "Contact us" section

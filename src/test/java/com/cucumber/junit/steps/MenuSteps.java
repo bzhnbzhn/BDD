@@ -24,12 +24,12 @@ public class MenuSteps {
 
     @When("I enter {string} in the {string} field")
     public void enterValueInField(String value, String field) {
-        loginPage.field(field).sendKeys(value);
+        loginPage.setFieldValue(value, field);
     }
 
     @When("I press the {string} button")
     public void clickButton(String button) {
-        loginPage.button(button).click();
+        loginPage.clickButton(button);
     }
 
     @Then("page with title {string} is displayed")

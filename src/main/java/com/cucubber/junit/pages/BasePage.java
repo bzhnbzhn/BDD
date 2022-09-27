@@ -11,7 +11,6 @@ import static com.cucubber.junit.driver.DriverManager.getDriver;
 
 public abstract class BasePage {
 
-    private static final String IFRAME = "//*[@class='signin-iframe']";
 
     public BasePage() {
         PageFactory.initElements(getDriver(), this);
@@ -29,7 +28,4 @@ public abstract class BasePage {
         return !findElements(by).isEmpty();
     }
 
-    public static void iframe() {
-        getDriver().switchTo().frame(findElement(By.xpath(IFRAME)));
-    }
 }
