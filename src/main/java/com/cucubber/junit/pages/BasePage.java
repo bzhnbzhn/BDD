@@ -1,6 +1,5 @@
 package com.cucubber.junit.pages;
 
-import com.cucubber.junit.driver.DriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -25,7 +24,6 @@ public abstract class BasePage {
     }
 
     public boolean isElementDisplayed(By by) {
-        return !findElements(by).isEmpty();
+        return findElement(by).isDisplayed();
     }
-
 }
