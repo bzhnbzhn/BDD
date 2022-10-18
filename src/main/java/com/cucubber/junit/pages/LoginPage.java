@@ -1,7 +1,6 @@
 package com.cucubber.junit.pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
 import static com.cucubber.junit.driver.DriverManager.getDriver;
 import static java.lang.String.format;

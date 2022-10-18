@@ -9,6 +9,7 @@ import static java.lang.String.format;
 public class HomePage extends BasePage {
 
     private static final String BOOK_DEPOSITORY_URL = "https://www.bookdepository.com/";
+    private static final String EPAM_URL = "https://www.epam.com/";
     private static final String TEXT_PATTERN = "//*[contains(text(),'%s')]";
     private static final String SEARCH_FIELD = "//*[@placeholder='Search for books by keyword / title / author / ISBN']";
 
@@ -16,7 +17,11 @@ public class HomePage extends BasePage {
         DriverManager.getDriver().get(BOOK_DEPOSITORY_URL);
     }
 
-    public void openProductDetailsPage(String productIdOrName){
+    public void openEPAMWebSite() {
+        DriverManager.getDriver().get(EPAM_URL);
+    }
+
+    public void openProductDetailsPage(String productIdOrName) {
         findElement(By.xpath(format(SEARCH_FIELD))).sendKeys(productIdOrName);
     }
 

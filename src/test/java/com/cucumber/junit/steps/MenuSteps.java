@@ -3,6 +3,10 @@ package com.cucumber.junit.steps;
 import com.cucubber.junit.pages.*;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import test.ContactPageTest;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -13,6 +17,8 @@ public class MenuSteps {
     private final ProductDetailsPage productDetailsPage = new ProductDetailsPage();
     private final CartPage cartPage = new CartPage();
     private final CheckOutPage checkOutPage = new CheckOutPage();
+    private final ContactPage contactPage = new ContactPage();
+    private final ContactPageTest contactPageTest = new ContactPageTest();
 
     @When("the user open web site")
     public void theUserOpenWebSite() {
@@ -71,7 +77,21 @@ public class MenuSteps {
     @Then("basket {string} is equal to basket {string}")
     public void basketIsEqualToBasket(String firstValue, String secondValue) {
         assertThat(checkOutPage.value(firstValue).equalsIgnoreCase(checkOutPage.value(secondValue)))
-                .overridingErrorMessage("Values are not same");
+                .withFailMessage("Values are not same");
     }
 
+    @When("the user open EPAM web site")
+    public void openEPAMWebSite() {
+        homePage.openEPAMWebSite();
+    }
+
+    @Then("the company address displayed correctly")
+    public void isStreetNumberShown() {
+        String address = ContactPage.getAddress();
+        Pattern pattern = Pattern.compile("(\\d{1,3}.\\w{3,20}.\\w{3,20})|([A-Za-z]{3,10} \\d{3})|((?<=\\n)[^,\\n]+(?=,))|([A-Z]{2}[ ]?\\d{5}?)|([A-Za-z0-9_-]{2,19}$)");
+        Matcher matcher = pattern.matcher(address);
+        assertThat(matcher.find()).isTrue()
+                .withFailMessage("The company address displayed not correctly");
+
+    }
 }
